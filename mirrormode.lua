@@ -1,1 +1,2 @@
+--Credits:Samet Çetinkaya#1447
 local a=game:GetService("ReplicatedStorage")local b=a.Remotes.PlaceBIockRegion;loadstring(game:HttpGet("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/SimpleSpy.lua"))()local c=false;local function d(e)if c then c=false;return end;local f=e[1]local g=e[2]local h=Vector3.new(-f.X,f.Y,f.Z)local i=g*CFrame.Angles(0,0,0)local j={h,i,e[3],e[4]}c=true;b:InvokeServer(unpack(j))end;SimpleSpy:GetRemoteFiredSignal(b):Connect(d)
