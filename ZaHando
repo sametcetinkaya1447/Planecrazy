@@ -1518,17 +1518,21 @@ local aircraft = samet_gaziAircraft
 
 
 -- Search for the blue part with the color 0, 85, 255
-local bluePart = aircraft:FindFirstChild("BlockStd"):FindFirstChildWhichIsA("BasePart", true)
-while bluePart and bluePart.Color ~= Color3.fromRGB(160, 160, 160) do
-	bluePart = bluePart:FindFirstChildWhichIsA("BasePart", true)
+local bluePart = nil
+for _, blockStdModel in ipairs(aircraft:GetDescendants()) do
+	if blockStdModel:IsA("Model") and blockStdModel.Name == "BlockStd" then
+		bluePart = blockStdModel:FindFirstChildWhichIsA("BasePart", true)
+		if bluePart and bluePart.Color == Color3.fromRGB(160, 160, 160) then
+			break
+		end
+	end
 end
 
 -- Check if the blue part was found
 if not bluePart then
-	warn("Blue part not found!")
+	warn("blue part not found!")
 	return
 end
-
 -- Get a reference to the first hand part
 local handFolder = workspace.samet_gazi.Hand
 local firstHandPart = handFolder:GetChildren()[1]
