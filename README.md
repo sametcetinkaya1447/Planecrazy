@@ -8,3 +8,4 @@ some of the scripts how does they look
 ![image](https://github.com/erotiksamet/Planecrazy/assets/61390431/4fc2a725-193d-46f7-999d-610f10e31f2c)
 ![ApplicationFrameHost_0htgmahfUg](https://github.com/erotiksamet/Planecrazy/assets/61390431/6fe82b05-fb35-47d4-ad57-1fc9d8487667)
 ![ApplicationFrameHost_IRZB36vdOD](https://github.com/erotiksamet/Planecrazy/assets/61390431/06efbc7c-8b5e-4470-abfd-915ae9c4b596)
+![ApplicationFrameHost_0qBmZYANc1](https://github.com/erotiksamet/Planecrazy/assets/61390431/5ce6a963-d08a-4fbd-9d9b-b05082e5f40c)
