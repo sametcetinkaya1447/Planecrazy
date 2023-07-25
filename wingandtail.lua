@@ -2,10 +2,10 @@
 -- [[ BYPASS ANTI CHEAT ]] --
 local Me = game.Players.LocalPlayer
 local RS = game.ReplicatedStorage
-local AirCrafts = workspace.PlayerAircraft
+local AirCrafts = workspace.samet_gaziAircraft
 local UIS = game:GetService("UserInputService")
 local SettingsScript = Me.PlayerGui.SettingsGui.LocalScript
-
+-- workspace.samet_gaziAircraft
 local nhook 
 local GC = getgc()
 
@@ -133,7 +133,7 @@ end
 local oc = oc or function(...) return ... end
 
 local plr = game.Players.LocalPlayer
-
+-- workspace.CreatorChicken
 local char = plr.Character
 
 local tor = char.Torso
@@ -939,12 +939,12 @@ local player = game:GetService("Players").LocalPlayer
 wait()
 
 -- Get a reference to the aircraft model
-local aircraft = workspace[playerName.."Aircraft"]
+local aircraft = workspace.samet_gaziAircraft
 
 -- Find all Trail models and their Part objects
 local trailParts = {}
 for _, trailModel in ipairs(aircraft:GetDescendants()) do
-    if trailModel.Name == "Trail" and trailModel:IsA("Model") and trailModel.PrimaryPart and trailModel.Part and trailModel.Part.Color == Color3.fromRGB(255, 255, 255) then
+    if trailModel.Name == "Trail" and trailModel:IsA("Model") and trailModel.PrimaryPart and trailModel.Part and  (trailModel.Part.Color == Color3.fromRGB(255, 255, 255)) then
         trailModel.PrimaryPart.CanCollide = false
         trailModel.Part.CanCollide = false
         trailModel.PrimaryPart.Massless = true
@@ -965,97 +965,6 @@ if #wing <= 2 then
     warn("Not enough wing parts found!")
     return
 end
-
-local wingPartIndex = 3
-for _, part in ipairs(trailParts) do
-    print(part.Position)
-    zeroGrav(part)
-
-    if wingPartIndex > #wing then
-        wingPartIndex = 3 -- Reset wing part index if all wing parts have been used
-    end
-
-    local wingPart = wing[wingPartIndex]
-    align(part, wingPart, 100)
-
-    -- Rotate the trail part by 90 degrees on the Y-axis
-    local rotation = CFrame.Angles(0, math.rad(90), 0)
-    part.CFrame = part.CFrame * rotation
-
-    wingPartIndex = wingPartIndex + 1
-end
-
-local RunService = game:GetService("RunService")
-local Player = game:GetService("Players").LocalPlayer
-  local Character = Player.Character
-    local Root = Character:WaitForChild("Torso")
-    local Model = Instance.new("Model", Character)
-  local Mouse = Player:GetMouse()
-local Parts = {}
-local Parts2 = {}
-local Parts3 = {}
-local Parts4 = {}
-local RadX, RadY = 0, 0
-
-local function Lerp(Part, CFrame, Time)
-	local NewCFrame = Part.CFrame:Lerp(CFrame, Time)
-	Part.CFrame = NewCFrame
-	return NewCFrame
-end
-
-local function Load(Table, XOffset, YOffset)
-	local Last
-	for _, Part in pairs(Table) do
-		if Last then
-			Lerp(Part, Last.CFrame * CFrame.Angles(RadX, RadY, 0) * CFrame.new(0, 0, 2), 0.5)
-		else
-			Lerp(Part, Root.CFrame * CFrame.Angles(RadX + math.rad(XOffset), RadY + math.rad(YOffset), 0) * CFrame.new(0, -0.5, 3), 0.5)
-		end
-		Last = Part
-	end
-end
-
-local function CreateParts(Table, Amount)
-	for i = 1, Amount do
-		local Part = Instance.new("Part", Model)
-		Part.Size = Vector3.new(1, 1, 5)
-		Part.Anchored = true
-		Part.CanCollide = false
-        Part.Transparency = 1
-		table.insert(Table, Part)
-	end
-end
-
-CreateParts(Parts, 12)
-CreateParts(Parts2, 24)
-CreateParts(Parts3, 6)
-CreateParts(Parts4, 6)
-
-local SineX = 0
-local SineY = 0
-local function Step()
-	SineX = SineX + 0.1
-	SineY = SineY + 0.1 / 2
-	local SinX = math.sin(SineX) * 2
-	local SinY = math.sin(SineY) * 2
-	
-	Load(Parts, 5 + SinX, 0 + SinY)
-	Load(Parts2, -5 + SinX, 0 + SinY)
-	Load(Parts3, 0 + SinX, 15 + SinY)
-	Load(Parts4, 0 + SinX, -15 + SinY)
-end
-RunService.RenderStepped:Connect(Step)
-
-Mouse.Move:Connect(function()
-	local X = Mouse.X - Mouse.ViewSizeX/2
-	local Y = Mouse.Y - Mouse.ViewSizeY/2
-	RadY = (X / Mouse.ViewSizeX)*2
-	RadX = (Y / Mouse.ViewSizeY)*2
-end)
-
-Model.Name = "tailpro"
-
-
 
 local function align(Part0, Part1, res)
     local att1 = Instance.new("Attachment")
@@ -1106,12 +1015,191 @@ local player = game:GetService("Players").LocalPlayer
 wait()
 
 -- Get a reference to the aircraft model
-local aircraft = workspace[playerName.."Aircraft"]
+local aircraft = workspace.samet_gaziAircraft
 
 -- Find all Trail models and their Part objects
 local trailParts = {}
 for _, trailModel in ipairs(aircraft:GetDescendants()) do
-    if trailModel.Name == "Trail" and trailModel:IsA("Model") and trailModel.PrimaryPart and trailModel.Part and trailModel.Part.Color == Color3.fromRGB(0, 0, 0) then
+    if trailModel.Name == "Trail" and trailModel:IsA("Model") and trailModel.PrimaryPart and trailModel.Part and  (trailModel.Part.Color == Color3.fromRGB(255, 255, 255)) then
+        trailModel.PrimaryPart.CanCollide = false
+        trailModel.PrimaryPart.CanCollide = false
+        trailModel.Part.CanCollide = false
+        trailModel.PrimaryPart.Massless = true
+        trailModel.Part.Massless = true
+
+        table.insert(trailParts, trailModel.Part)
+    end
+end
+
+-- Check if any Trail parts were found
+if #trailParts == 0 then
+    warn("No Trail parts found!")
+    return
+end
+
+local wing = workspace.samet_gazi.gay:GetChildren()
+if #wing <= 2 then
+    warn("Not enough wing parts found!")
+    return
+end
+
+local tailPartsCount = #wing - 2
+local usedTrailParts = math.min(#trailParts, tailPartsCount)
+
+local wingPartIndex = 3
+for i = 1, usedTrailParts do
+local part = trailParts[i]
+print(part.Position)
+zeroGrav(part)
+
+local wingPart = wing[wingPartIndex]
+align(part, wingPart, 100)
+
+-- Rotate the trail part by 90 degrees on the Y-axis
+local rotation = CFrame.Angles(0, math.rad(90), 0)
+part.CFrame = part.CFrame * rotation
+
+wingPartIndex = wingPartIndex + 1
+end
+local gayModel = game.Workspace.samet_gazi.gay
+
+-- Function to set transparency of parts inside the model
+local function setTransparency(model)
+    for _, part in ipairs(model:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Transparency = 1
+        end
+    end
+end
+
+-- Call the function to set transparency
+setTransparency(gayModel)
+local RunService = game:GetService("RunService")
+local Player = game:GetService("Players").LocalPlayer
+  local Character = Player.Character
+    local Root = Character:WaitForChild("Torso")
+    local Model = Instance.new("Model", Character)
+  local Mouse = Player:GetMouse()
+local Parts = {}
+local Parts2 = {}
+local Parts3 = {}
+local Parts4 = {}
+local RadX, RadY = 0, 0
+
+local function Lerp(Part, CFrame, Time)
+	local NewCFrame = Part.CFrame:Lerp(CFrame, Time)
+	Part.CFrame = NewCFrame
+	return NewCFrame
+end
+
+local function Load(Table, XOffset, YOffset)
+	local Last
+	for _, Part in pairs(Table) do
+		if Last then
+			Lerp(Part, Last.CFrame * CFrame.Angles(RadX, RadY, 0) * CFrame.new(0, 0, 2), 0.5)
+		else
+			Lerp(Part, Root.CFrame * CFrame.Angles(RadX + math.rad(XOffset), RadY + math.rad(YOffset), 0) * CFrame.new(0, -0.5, 3), 0.5)
+		end
+		Last = Part
+	end
+end
+
+local function CreateParts(Table, Amount)
+	for i = 1, Amount do
+		local Part = Instance.new("Part", Model)
+		Part.Size = Vector3.new(1, 1, 5)
+		Part.Anchored = true
+		Part.CanCollide = false
+        Part.Transparency = 0.8
+		table.insert(Table, Part)
+	end
+end
+
+CreateParts(Parts, 12)
+CreateParts(Parts2, 24)
+CreateParts(Parts3, 6)
+CreateParts(Parts4, 6)
+
+local SineX = 0
+local SineY = 0
+local function Step()
+	SineX = SineX + 0.1
+	SineY = SineY + 0.1 / 2
+	local SinX = math.sin(SineX) * 2
+	local SinY = math.sin(SineY) * 2
+	
+	Load(Parts, 5 + SinX, 0 + SinY)
+	Load(Parts2, -5 + SinX, 0 + SinY)
+	Load(Parts3, 0 + SinX, 15 + SinY)
+	Load(Parts4, 0 + SinX, -15 + SinY)
+end
+RunService.RenderStepped:Connect(Step)
+
+Mouse.Move:Connect(function()
+	local X = Mouse.X - Mouse.ViewSizeX/2
+	local Y = Mouse.Y - Mouse.ViewSizeY/2
+	RadY = (X / Mouse.ViewSizeX)*2
+	RadX = (Y / Mouse.ViewSizeY)*2
+end)
+
+Model.Name = "tailpro"
+
+local function align(Part0, Part1, res)
+
+        local att1 = Instance.new("Attachment")
+        att1.Orientation = Vector3.new(0, 0, 0)
+        att1.Position = Vector3.new(0, 0, 0)
+        att1.Archivable = true
+        local att0 = att1:Clone()
+    
+        local ap = Instance.new("AlignPosition", att0)
+        ap.ApplyAtCenterOfMass = true
+        ap.MaxForce = 9e9
+        ap.MaxVelocity = 9e9
+        ap.ReactionForceEnabled = false
+        ap.Responsiveness = res
+        ap.RigidityEnabled = false
+    
+        local ao = Instance.new("AlignOrientation", att0)
+        ao.MaxAngularVelocity = 9e9
+        ao.MaxTorque = 9e9
+        ao.PrimaryAxisOnly = false
+        ao.ReactionTorqueEnabled = false
+        ao.Responsiveness = res
+        ao.RigidityEnabled = false
+    
+        ap.Attachment1 = att1
+        ap.Attachment0 = att0
+        ao.Attachment1 = att1
+        ao.Attachment0 = att0
+    
+        att1.Parent = Part1
+        att0.Parent = Part0
+    
+        return att1
+    end
+
+local function zeroGrav(part)
+    if part:FindFirstChild("BodyForce") then return end
+    local temp = Instance.new("BodyForce")
+    temp.Force = part:GetMass() * Vector3.new(0, workspace.Gravity, 0)
+    temp.Parent = part
+end
+
+
+local playerName = game.Players.LocalPlayer.Name
+
+-- Wait until the workspace and the player's character are available
+local workspace = game:GetService("Workspace")
+local player = game:GetService("Players").LocalPlayer
+wait()
+
+-- Get a reference to the aircraft model
+local aircraft = workspace[playerName.."Aircraft"]
+
+local trailParts = {}
+for _, trailModel in ipairs(aircraft:GetDescendants()) do
+    if trailModel.Name == "Trail" and trailModel:IsA("Model") and trailModel.PrimaryPart and trailModel.Part and  (trailModel.Part.Color == Color3.fromRGB(0, 0, 0)) then
         trailModel.PrimaryPart.CanCollide = false
         trailModel.Part.CanCollide = false
         trailModel.PrimaryPart.Massless = true
@@ -1133,14 +1221,14 @@ if #wing <= 2 then
     return
 end
 
+local tailPartsCount = #wing - 2
+local usedTrailParts = math.min(#trailParts, tailPartsCount)
+
 local wingPartIndex = 3
-for _, part in ipairs(trailParts) do
+for i = 1, usedTrailParts do
+    local part = trailParts[i]
     print(part.Position)
     zeroGrav(part)
-
-    if wingPartIndex > #wing then
-        wingPartIndex = 3 -- Reset wing part index if all wing parts have been used
-    end
 
     local wingPart = wing[wingPartIndex]
     align(part, wingPart, 100)
