@@ -1,0 +1,1029 @@
+local function setTransparency(model)
+    if model:IsA("BasePart") then
+        model.Transparency = 0.8
+    end
+
+    for _, child in ipairs(model:GetChildren()) do
+        setTransparency(child)
+    end
+end
+
+local brock = workspace.Brock
+
+-- Set transparency for every part inside 'workspace.Brock'
+setTransparency(brock)
+
+
+local playerName = game.Players.LocalPlayer.Name
+local playerAircraft = workspace[playerName.."Aircraft"]
+
+for _, model in ipairs(playerAircraft:GetDescendants()) do
+   if model:IsA("Model") and model.Name == "BlockBeam" then
+       for _, part in ipairs(model:GetDescendants()) do
+           if part:IsA("BasePart") and not part.Anchored then
+               part.CanCollide = false
+           end
+
+       end
+
+   end
+end
+
+for _, model in ipairs(playerAircraft:GetDescendants()) do
+    if model:IsA("Model") and model.Name == "BlockBeam2" then
+        for _, part in ipairs(model:GetDescendants()) do
+            if part:IsA("BasePart") and not part.Anchored then
+                part.CanCollide = false
+            end
+ 
+        end
+ 
+    end
+ end
+ 
+ 
+local playerName = game.Players.LocalPlayer.Name
+local playerAircraft = workspace[playerName.."Aircraft"]
+ for _, model in ipairs(playerAircraft:GetDescendants()) do
+	if model:IsA("Model")  then
+		for _, part in ipairs(model:GetDescendants()) do
+			if part:IsA("BasePart") and not part.Anchored then
+				part.CanCollide = false
+			end
+		end
+	end
+end
+for _, model in ipairs(playerAircraft:GetDescendants()) do
+    if model:IsA("Model") and model.Name == "Ball3x3" then
+        for _, part in ipairs(model:GetDescendants()) do
+            if part:IsA("BasePart") and not part.Anchored then
+                part.CanCollide = true
+            end
+ 
+        end
+ 
+    end
+ end
+ 
+
+local ZERO_GRAV_FORCE = Vector3.new(0, workspace.Gravity, 0)
+local samet_gaziAircraft = workspace.samet_gaziAircraft
+
+
+local function zeroGrav2(part)
+	if part:FindFirstChild("BodyForce") then
+		return
+	end
+	local temp = Instance.new("BodyForce")
+	temp.Force = part:GetMass() * ZERO_GRAV_FORCE
+	temp.Parent = part
+end
+
+local balls = {}
+for _, model in ipairs(samet_gaziAircraft:GetDescendants()) do
+	if model:IsA("Model") and model.Name == "BlockBeam" then
+		for _, part in ipairs(model:GetDescendants()) do
+			if part:IsA("BasePart") and not part.Anchored then
+				zeroGrav2(part)
+				
+			end
+		end
+	end
+end
+    
+        local function align(Part0, Part1, res)
+            local att1 = Instance.new("Attachment")
+            att1.Orientation = Vector3.new(0, 0, 0)
+            att1.Position = Vector3.new(0, 0, 0)
+            att1.Archivable = true
+            local att0 = att1:Clone()
+            
+            local ap = Instance.new("AlignPosition", att0)
+            ap.ApplyAtCenterOfMass = true
+            ap.MaxForce = 9e9
+            ap.MaxVelocity = 9e9
+            ap.ReactionForceEnabled = false
+            ap.Responsiveness = res
+            ap.RigidityEnabled = false
+            
+            local ao = Instance.new("AlignOrientation", att0)
+            ao.MaxAngularVelocity = 9e9
+            ao.MaxTorque = 9e9
+            ao.PrimaryAxisOnly = false
+            ao.ReactionTorqueEnabled = false
+            ao.Responsiveness = res
+            ao.RigidityEnabled = false
+            
+            ap.Attachment1 = att1
+            ap.Attachment0 = att0
+            ao.Attachment1 = att1
+            ao.Attachment0 = att0
+            
+            att1.Parent = Part1
+            att0.Parent = Part0
+            
+            return att1
+        end
+        local function align2(Part0, Part1, res)
+            local att1 = Instance.new("Attachment")
+            att1.Orientation = Vector3.new(0, 0, 0)
+            att1.Position = Vector3.new(0, 20, 0)
+            att1.Archivable = true
+            local att0 = att1:Clone()
+            
+            local ap = Instance.new("AlignPosition", att0)
+            ap.ApplyAtCenterOfMass = true
+            ap.MaxForce = 9e9
+            ap.MaxVelocity = 9e9
+            ap.ReactionForceEnabled = false
+            ap.Responsiveness = res
+            ap.RigidityEnabled = false
+            
+            local ao = Instance.new("AlignOrientation", att0)
+            ao.MaxAngularVelocity = 9e9
+            ao.MaxTorque = 9e9
+            ao.PrimaryAxisOnly = false
+            ao.ReactionTorqueEnabled = false
+            ao.Responsiveness = res
+            ao.RigidityEnabled = false
+            
+            ap.Attachment1 = att1
+            ap.Attachment0 = att0
+            ao.Attachment1 = att1
+            ao.Attachment0 = att0
+            
+            att1.Parent = Part1
+            att0.Parent = Part0
+            
+            return att1
+        end
+
+
+
+        -- Wait until the workspace and the player's character are available
+        local workspace = game:GetService("Workspace")
+        local player = game:GetService("Players").LocalPlayer
+        -- Get a reference to the aircraft model
+        local playerName = game.Players.LocalPlayer.Name
+        local aircraft = workspace[playerName.."Aircraft"]
+        
+            wait()
+-- path of leg part
+-- workspace.Brock.LLeg["-1-1-1"]
+-- left Leg
+local workspace = game:GetService("Workspace")
+local LLeg1 = workspace.Brock.LLeg["-1-1-1"]
+local LLeg2 = workspace.Brock.LLeg["-1-11"]
+local LLeg3 = workspace.Brock.LLeg["-11-1"]
+local LLeg4 = workspace.Brock.LLeg["-111"]
+local LLeg5 = workspace.Brock.LLeg["1-1-1"]
+local LLeg6 = workspace.Brock.LLeg["1-11"]
+local LLeg7 = workspace.Brock.LLeg["11-1"]
+local LLeg8 = workspace.Brock.LLeg["111"]
+-- left  Thi
+local LThi1 = workspace.Brock.LThi["-1-1-1"]
+local LThi2 = workspace.Brock.LThi["-1-11"]
+local LThi3 = workspace.Brock.LThi["-11-1"]
+local LThi4 = workspace.Brock.LThi["-111"]
+local LThi5 = workspace.Brock.LThi["1-1-1"]
+local LThi6 = workspace.Brock.LThi["1-11"]
+local LThi7 = workspace.Brock.LThi["11-1"]
+local LThi8 = workspace.Brock.LThi["111"]
+-- right Leg
+ local RLeg1 = workspace.Brock.RLeg["-1-1-1"]
+local RLeg2 = workspace.Brock.RLeg["-1-11"]
+local RLeg3 = workspace.Brock.RLeg["-11-1"]
+local RLeg4 = workspace.Brock.RLeg["-111"]
+local RLeg5 = workspace.Brock.RLeg["1-1-1"]
+local RLeg6 = workspace.Brock.RLeg["1-11"]
+local RLeg7 = workspace.Brock.RLeg["11-1"]
+local RLeg8 = workspace.Brock.RLeg["111"]
+-- right Thi
+local RThi1 = workspace.Brock.RThi["-1-1-1"]
+local RThi2 = workspace.Brock.RThi["-1-11"]
+local RThi3 = workspace.Brock.RThi["-11-1"]
+local RThi4 = workspace.Brock.RThi["-111"]
+local RThi5 = workspace.Brock.RThi["1-1-1"]
+local RThi6 = workspace.Brock.RThi["1-11"]
+local RThi7 = workspace.Brock.RThi["11-1"]
+local RThi8 = workspace.Brock.RThi["111"]
+-- left arm
+local LArm1 = workspace.Brock.LArm["-1-1-1"]
+local LArm2 = workspace.Brock.LArm["-1-11"]
+local LArm3 = workspace.Brock.LArm["-11-1"]
+local LArm4 = workspace.Brock.LArm["-111"]
+local LArm5 = workspace.Brock.LArm["1-1-1"]
+local LArm6 = workspace.Brock.LArm["1-11"]
+local LArm7 = workspace.Brock.LArm["11-1"]
+local LArm8 = workspace.Brock.LArm["111"]
+-- Left Shoulder
+local LSho1 = workspace.Brock.LSho["-1-1-1"]
+local LSho2 = workspace.Brock.LSho["-1-11"]
+local LSho3 = workspace.Brock.LSho["-11-1"]
+local LSho4 = workspace.Brock.LSho["-111"]
+local LSho5 = workspace.Brock.LSho["1-1-1"]
+local LSho6 = workspace.Brock.LSho["1-11"]
+local LSho7 = workspace.Brock.LSho["11-1"]
+local LSho8 = workspace.Brock.LSho["111"]
+-- right arm
+local RArm1 = workspace.Brock.RArm["-1-1-1"]
+local RArm2 = workspace.Brock.RArm["-1-11"]
+local RArm3 = workspace.Brock.RArm["-11-1"]
+local RArm4 = workspace.Brock.RArm["-111"]
+local RArm5 = workspace.Brock.RArm["1-1-1"]
+local RArm6 = workspace.Brock.RArm["1-11"]
+local RArm7 = workspace.Brock.RArm["11-1"]
+local RArm8 = workspace.Brock.RArm["111"]
+-- right Shoulder
+local RSho1 = workspace.Brock.RSho["-1-1-1"]
+local RSho2 = workspace.Brock.RSho["-1-11"]
+local RSho3 = workspace.Brock.RSho["-11-1"]
+local RSho4 = workspace.Brock.RSho["-111"]
+local RSho5 = workspace.Brock.RSho["1-1-1"]
+local RSho6 = workspace.Brock.RSho["1-11"]
+local RSho7 = workspace.Brock.RSho["11-1"]
+local RSho8 = workspace.Brock.RSho["111"]
+-- torso
+local Torso1 = workspace.Brock.pTorso["-1-1-1"]
+local Torso2 = workspace.Brock.pTorso["-1-11"]
+local Torso3 = workspace.Brock.pTorso["-11-1"]
+local Torso4 = workspace.Brock.pTorso["-111"]
+local Torso5 = workspace.Brock.pTorso["1-1-1"]
+local Torso6 = workspace.Brock.pTorso["1-11"]
+local Torso7 = workspace.Brock.pTorso["11-1"]
+local Torso8 = workspace.Brock.pTorso["111"]
+-- head
+local Head1 = workspace.Brock.pHead
+-- Right Arm
+local RArm0 = workspace.Brock.RArm
+-- Left Arm
+local LArm0 = workspace.Brock.LArm
+    -- Search for the 000 part with the color 0, 0, 0
+    local Part000 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(0, 0, 0) then
+            Part000 = BlockBeam.BlockStd
+ 
+            break
+        end
+    end
+ 
+    local Part111 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(1, 1, 1) then
+            Part111 = BlockBeam.BlockStd
+          
+            break
+        end
+    end
+local Part222 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(2, 2, 2) then
+            Part222 = BlockBeam.BlockStd
+      
+            break
+        end
+    end
+local Part333 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(3, 3, 3) then
+            Part333 = BlockBeam.BlockStd
+          
+            break
+        end
+    end
+local Part444 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(4, 4, 4) then
+            Part444 = BlockBeam.BlockStd
+
+            break
+        end
+    end
+local Part555 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(5, 5, 5) then
+            Part555 = BlockBeam.BlockStd
+       
+            break
+        end
+    end
+local Part666 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(6, 6, 6) then
+            Part666 = BlockBeam.BlockStd
+           
+            break
+        end
+    end
+local Part777 = nil 
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(7, 7, 7) then
+            Part777 = BlockBeam.BlockStd
+            
+            break
+        end
+    end
+local Part888 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(8, 8, 8) then
+            Part888 = BlockBeam.BlockStd
+         
+            break
+        end
+    end
+local Part999 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("BasePart") and BlockBeam.BlockStd.Color == Color3.fromRGB(9, 9, 9) then
+            Part999 = BlockBeam.BlockStd
+       
+            break
+        end
+    end
+local Part101010 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(10, 10, 10) then
+            Part101010 = BlockBeam.BlockStd
+         
+            break
+        end
+    end
+local Part111111 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(11, 11, 11) then
+        Part111111 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part121212 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(12, 12, 12) then
+        Part121212 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part131313 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(13, 13, 13) then
+        Part131313 = BlockBeam.BlockStd
+  
+        break
+    end
+end
+local Part141414 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(14, 14, 14) then
+        Part141414 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part151515 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(15, 15, 15) then
+        Part151515 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part161616 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(16, 16, 16) then
+        Part161616 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part171717 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(17, 17, 17) then
+        Part171717 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part181818 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(18, 18, 18) then
+        Part181818 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part191919 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(19, 19, 19) then
+        Part191919 = BlockBeam.BlockStd
+  
+        break
+    end
+end
+local Part202020 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(20, 20, 20) then
+        Part202020 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part212121 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(21, 21, 21) then
+        Part212121 = BlockBeam.BlockStd
+
+       
+
+        break
+    end
+end
+local Part222222 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(22, 22, 22) then
+        Part222222 = BlockBeam.BlockStd
+ 
+        break
+    end
+end
+local Part232323 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(23, 23, 23) then
+        Part232323 = BlockBeam.BlockStd
+    
+        break
+    end
+end
+local Part242424 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(24, 24, 24) then
+        Part242424 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part252525 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(25, 25, 25) then
+        Part252525 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part262626 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(26, 26, 26) then
+        Part262626 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part272727 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(27, 27, 27) then
+        Part272727 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part282828 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(28, 28, 28) then
+        Part282828 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part292929 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(29, 29, 29) then
+        Part292929 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part303030 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(30, 30, 30) then
+            Part303030 = BlockBeam.BlockStd
+  
+            break
+        end
+    end
+local Part313131 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(31, 31, 31) then
+        Part313131 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part323232 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(32, 32, 32) then
+        Part323232 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part333333 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(33, 33, 33) then
+        Part333333 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part343434 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(34, 34, 34) then
+        Part343434 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part353535 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(35, 35, 35) then
+        Part353535 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part363636 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(36, 36, 36) then
+        Part363636 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part373737 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(37, 37, 37) then
+        Part373737 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part383838 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(38, 38, 38) then
+            Part383838 = BlockBeam.BlockStd
+  
+            break
+        end
+    end
+local Part393939 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(39, 39, 39) then
+        Part393939 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part404040 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(40, 40, 40) then
+        Part404040 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part414141 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(41, 41, 41) then
+        Part414141 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part424242 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(42, 42, 42) then
+        Part424242 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part434343 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(43, 43, 43) then
+        Part434343 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part444444 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(44, 44, 44) then
+        Part444444 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part454545 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(45, 45, 45) then
+        Part454545 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part464646 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(46, 46, 46) then
+            Part464646 = BlockBeam.BlockStd
+  
+            break
+        end
+    end
+local Part474747 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(47, 47, 47) then
+        Part474747 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part484848 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(48, 48, 48) then
+        Part484848 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part494949 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(49, 49, 49) then
+        Part494949 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part505050 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(50, 50, 50) then
+        Part505050 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part515151 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(51, 51, 51) then
+        Part515151 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part525252 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(52, 52, 52) then
+        Part525252 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part535353 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(53, 53, 53) then
+        Part535353 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part545454 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(54, 54, 54) then
+            Part545454 = BlockBeam.BlockStd
+  
+            break
+        end
+    end
+local Part555555 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(55, 55, 55) then
+        Part555555 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part565656 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(56, 56, 56) then
+        Part565656 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part575757 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(57, 57, 57) then
+        Part575757 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part585858 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(58, 58, 58) then
+        Part585858 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part595959 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(59, 59, 59) then
+        Part595959 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part606060 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(60, 60, 60) then
+        Part606060 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part616161 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(61, 61, 61) then
+        Part616161 = BlockBeam.BlockStd
+            break
+    end
+end
+local Part626262 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(62, 62, 62) then
+            Part626262 = BlockBeam.BlockStd
+  
+            break
+        end
+    end
+    local Part636363 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(63, 63, 63) then
+            Part636363 = BlockBeam.BlockStd
+    
+            break
+        end
+    end
+    local Part646464 = nil
+    for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+        if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(64, 64, 64) then
+            Part646464 = BlockBeam.BlockStd
+    
+            break
+        end
+    end
+
+    local Part656565 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+    if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(65, 65, 65) then
+        Part656565 = BlockBeam.BlockStd
+
+        break
+    end
+end
+local Part666666 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+	if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(66, 66, 66) then
+		Part666666 = BlockBeam.BlockStd
+
+		break
+	end
+end
+
+local Part676767 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(67, 67, 67) then
+	Part676767 = BlockBeam.BlockStd
+
+	break
+end
+end
+local Part686868 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+	if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(68, 68, 68) then
+		Part686868 = BlockBeam.BlockStd
+
+		break
+	end
+end
+
+local Part696969 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(69, 69, 69) then
+	Part696969 = BlockBeam.BlockStd
+
+	break
+end
+end
+local Part707070 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(70, 70, 70) then
+	Part707070 = BlockBeam.BlockStd
+
+	break
+end
+end
+
+local Part717171 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(71, 71, 71) then
+Part717171 = BlockBeam.BlockStd
+
+break
+end
+end
+local Part727272 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(72, 72, 72) then
+Part727272 = BlockBeam.BlockStd
+
+break
+end
+end
+local Part737373 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(73, 73, 73) then
+Part737373 = BlockBeam.BlockStd
+
+break
+end
+end
+local Part747474 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(74, 74, 74) then
+Part747474 = BlockBeam.BlockStd
+break
+end
+end
+local Part757575 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(75, 75, 75) then
+Part757575 = BlockBeam.BlockStd
+break
+end
+end
+local Part767676 = nil
+for _, BlockBeam in ipairs(aircraft:GetDescendants()) do
+if BlockBeam.Name == "BlockBeam" and BlockBeam.BlockStd:IsA("Part") and BlockBeam.BlockStd.Color == Color3.fromRGB(76, 76, 76) then
+Part767676 = BlockBeam.BlockStd
+break
+end
+end
+
+
+
+
+
+
+
+
+
+
+
+        -- align of LLeg
+align(Part000, LLeg1, 100)
+align(Part111, LLeg2, 100)
+align(Part222, LLeg3, 100)
+align(Part333, LLeg4, 100)
+align(Part444, LLeg5, 100)
+align(Part555, LLeg6, 100)
+align(Part666, LLeg7, 100)
+align(Part777, LLeg8, 100)
+-- align of LThi
+align(Part888, LThi1, 100)
+align(Part999, LThi2, 100)
+align(Part101010, LThi3, 100)
+align(Part111111, LThi4, 100)
+align(Part121212, LThi5, 100)
+align(Part131313, LThi6, 100)
+align(Part141414, LThi7, 100)
+align(Part151515, LThi8, 100)
+-- align of RLeg
+align(Part161616, RLeg1, 100)
+align(Part171717, RLeg2, 100)
+align(Part181818, RLeg3, 100)
+align(Part191919, RLeg4, 100)
+align(Part202020, RLeg5, 100)
+align(Part212121, RLeg6, 100)
+align(Part222222, RLeg7, 100)
+align(Part232323, RLeg8, 100)
+-- align of RThi
+align(Part242424, RThi1, 100)
+align(Part252525, RThi2, 100)
+align(Part262626, RThi3, 100)
+align(Part272727, RThi4, 100)
+align(Part282828, RThi5, 100)
+align(Part292929, RThi6, 100)
+align(Part303030, RThi7, 100)
+align(Part313131, RThi8, 100)
+-- align of LArm
+align(Part323232, LArm1, 100)
+align(Part333333, LArm2, 100)
+align(Part343434, LArm3, 100)
+align(Part353535, LArm4, 100)
+align(Part363636, LArm5, 100)
+align(Part373737, LArm6, 100)
+align(Part383838, LArm7, 100)
+align(Part393939, LArm8, 100)
+-- align of LSho
+align(Part404040, LSho1, 100)
+align(Part414141, LSho2, 100)
+align(Part424242, LSho3, 100)
+align(Part434343, LSho4, 100)
+align(Part444444, LSho5, 100)
+align(Part454545, LSho6, 100)
+align(Part464646, LSho7, 100)
+align(Part474747, LSho8, 100)
+-- align of RArm
+align(Part484848, RArm1, 100)
+align(Part494949, RArm2, 100)
+align(Part505050, RArm3, 100)
+align(Part515151, RArm4, 100)
+align(Part525252, RArm5, 100)
+align(Part535353, RArm6, 100)
+align(Part545454, RArm7, 100)
+align(Part555555, RArm8, 100)
+-- align of RSho
+align(Part565656, RSho1, 100)
+align(Part575757, RSho2, 100)
+align(Part585858, RSho3, 100)
+align(Part595959, RSho4, 100)
+align(Part606060, RSho5, 100)
+align(Part616161, RSho6, 100)
+align(Part626262, RSho7, 100)
+align(Part636363, RSho8, 100)
+-- align of torso
+-- 64 66 68 70
+align(Part646464, Torso1, 100)--
+align(Part656565, Torso2, 100)
+align(Part666666, Torso3, 100)--
+align(Part676767, Torso4, 100)
+align(Part686868, Torso5, 100)--
+align(Part696969, Torso6, 100)
+align(Part707070, Torso7, 100)--
+align(Part717171, Torso8, 100)
+-- align of head
+
+align(Part727272, Head1, 100)
+-- align of RArm
+align(Part737373, RArm0, 100)
+-- align of LArm
+align(Part747474, LArm0, 100)
+
+local samet_gaziAircraft = workspace.samet_gaziAircraft
+local onucuncuHandPart = Part757575
+local balls = {}
+
+local qHeld = false
+local qHeldTime = 0
+local shootThreshold = 1 -- Time in seconds to hold "Q" for shooting
+
+local function zeroGrav2(part)
+    if part:FindFirstChild("BodyForce") then
+        return
+    end
+    local temp = Instance.new("BodyForce")
+    temp.Force = part:GetMass() * Vector3.new(0, workspace.Gravity, 0)
+    temp.Parent = part
+end
+
+local function teleportBall(ball)
+    local position = onucuncuHandPart.Position + onucuncuHandPart.CFrame.LookVector
+    ball.CFrame = CFrame.new(position)
+
+    local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+    local direction = (mouse.Hit.Position - position).Unit
+    local bulletVelocity = Instance.new("BodyVelocity")
+    bulletVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bulletVelocity.Velocity = direction * 500
+    bulletVelocity.Parent = ball
+
+    wait(0.005)
+    bulletVelocity:Destroy()
+end
+
+local function shootBall()
+    if qHeld and qHeldTime >= shootThreshold then
+        local index = math.random(#balls)
+        teleportBall(balls[index])
+    end
+end
+
+local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+
+mouse.Button1Down:Connect(function()
+    shootBall()
+end)
+
+game:GetService("UserInputService").InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Q then
+        qHeld = true
+        repeat
+            wait()
+            qHeldTime = qHeldTime + 0.1
+        until not qHeld or input.KeyCode ~= Enum.KeyCode.Q
+    end
+end)
+
+game:GetService("UserInputService").InputEnded:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.Q then
+        qHeld = false
+        qHeldTime = 0
+    end
+end)
+
+for _, model in ipairs(samet_gaziAircraft:GetDescendants()) do
+    if model:IsA("Model") and model.Name == "Ball3x3" then
+        for _, part in ipairs(model:GetDescendants()) do
+            if part:IsA("BasePart") and not part.Anchored then
+                zeroGrav2(part)
+                table.insert(balls, part)
+            end
+        end
+    end
+end
