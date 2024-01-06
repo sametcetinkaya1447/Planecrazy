@@ -315,7 +315,7 @@ end)
 end
 
 CC={'','Bright yellow','Flame reddish orange'}
-Scale=19
+Scale=5
 Mat='Marble'
 
 SpawnPoint=PChar.UpperTorso.CFrame*cn(0,1+Scale*3,-20-Scale*1.5)
