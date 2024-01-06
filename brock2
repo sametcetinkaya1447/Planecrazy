@@ -229,7 +229,7 @@ Dmgv={8,16}
 HitDebounce={}
 Damage=function(Hum,Mult,Sound) 
 if not Hum or Hum.Parent==Char then return end 
-if not Hum.Parent:findFirstChild'UpperTorso' then return end 
+if not Hum.Parent:findFirstChild'Torso' then return end 
 local HName=Hum.Parent.Name
 if HitDebounce[HName] and HitDebounce[HName]>tick() then return end 
 HitDebounce[HName]=tick()+0.2
@@ -318,7 +318,7 @@ CC={'','Bright yellow','Flame reddish orange'}
 Scale=19
 Mat='Marble'
 
-SpawnPoint=PChar.Torso.CFrame*cn(0,1+Scale*3,-20-Scale*1.5)
+SpawnPoint=PChar.UpperTorso.CFrame*cn(0,1+Scale*3,-20-Scale*1.5)
 name='Brock'
 pcall(function() _G.OldMod00:Remove() end)
 
