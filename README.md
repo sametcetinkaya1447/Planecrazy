@@ -1,5 +1,5 @@
 # Planecrazy
-
+Warning Some scripts may be outdated and may need to be updated
 for hand read that tutorial
 https://docs.google.com/document/d/1c9uT2AuGandsBuklwip7HhSxSxONkOLifxlQTenH0-M/edit
 some of the scripts how does they look 
